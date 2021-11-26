@@ -1,0 +1,7 @@
+{
+  "name": "miSitio",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
