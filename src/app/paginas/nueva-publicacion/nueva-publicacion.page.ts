@@ -15,7 +15,7 @@ import { Vibration } from '@ionic-native/vibration/ngx';
 })
 export class NuevaPublicacionPage implements OnInit {
 
-  nuevaPublicacion = new Publicacion();
+  nuevaPublicacion:Publicacion;
   rubros!:Array<Rubro>;
   usuario:string;
   id_rubro: string;
@@ -26,6 +26,7 @@ export class NuevaPublicacionPage implements OnInit {
 
 
   constructor(private vibration: Vibration, private servUs:DatosSessionService, private servPu:PublicacionesService, private servRub: RubrosService, private router:Router) { 
+    this.nuevaPublicacion = new Publicacion();
     this.ok=0;
     this.mensaje="";
   }
@@ -42,6 +43,11 @@ export class NuevaPublicacionPage implements OnInit {
     }else{
       this.router.navigate(['/login']);
     }
+  }
+
+  ionViewWillEnter(){
+    this.nuevaPublicacion = new Publicacion();
+    this.mensaje="";
   }
 
   asignar(event){

@@ -26,6 +26,7 @@ export class EditarPublicacionesPage implements OnInit {
   }
 
   ngOnInit() {
+    this.mensaje="";
     this.rutaActiva.paramMap.subscribe(parametro => {
       const id = parametro.get('id_publicacion')
       this.publicacion = this.servPub.obtenerPublicacion(id);
@@ -35,6 +36,11 @@ export class EditarPublicacionesPage implements OnInit {
     })
     this.publicacion.username = this.storage.S_user();
   }
+
+  ionViewWillEnter(){
+    this.mensaje="";
+  }
+
 
   borrarMSJ(){
     this.mensaje="";

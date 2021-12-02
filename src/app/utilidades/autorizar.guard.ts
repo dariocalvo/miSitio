@@ -14,7 +14,7 @@ export class AutorizarGuard implements CanActivate, CanLoad {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
      
-      if (localStorage.getItem('id') != '' && localStorage.getItem('id') != null){
+      if (localStorage.getItem('id') != '' && localStorage.getItem('id') != null){//
         return true;
       }
       this.router.navigate(['/login']);
@@ -34,10 +34,6 @@ export class AutorizarGuard implements CanActivate, CanLoad {
     });
     await mensaje.present();
   } 
-
-
-
-
 
 
   canLoad(

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import {AutorizarGuard} from './utilidades/autorizar.guard';
+import {NegarGuard} from './utilidades/negar.guard';
 
 const routes: Routes = [
   {
@@ -26,10 +27,12 @@ const routes: Routes = [
   {
     path: 'login',
     canLoad: [AutorizarGuard],
+    canActivate: [NegarGuard],
     loadChildren: () => import('./paginas/login/login.module').then( m => m.LoginPageModule)
   },
   {
     path: 'registro',
+    canActivate: [NegarGuard],
     canLoad: [AutorizarGuard],
     loadChildren: () => import('./paginas/registro/registro.module').then( m => m.RegistroPageModule)
   },

@@ -30,6 +30,12 @@ export class RegistroPage implements OnInit {
   ngOnInit() {
   }
 
+  ionViewWillEnter(){
+    this.nuevoUsuario = new(Usuario);
+    this.comprobacion = new(Usuario);
+    this.msjpas= "";
+  }
+
   
     borrarMSJ(control:number){
       switch (control){

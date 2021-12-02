@@ -28,6 +28,12 @@ export class LoginPage implements OnInit {
   ngOnInit() {
   }
 
+  ionViewWillEnter(){
+    this.usuario="";
+    this.password="";
+    this.mensaje="";
+  }
+
   ingresar(){
     this.datos.append("usuario", this.usuario);
     this.datos.append("pass", this.password);
