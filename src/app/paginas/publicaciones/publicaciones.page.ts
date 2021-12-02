@@ -20,11 +20,13 @@ export class PublicacionesPage implements OnInit {
   ruta!:string;
   id_rubro:number;
   orden:number;
+  icon: string;
   
   constructor(private cargando:LoadingController, private storage:DatosSessionService, private servPub:PublicacionesService, private servRub: RubrosService, private alert: AlertController, private menu: MenuController) { 
     this.ruta = "/Publicacion/Activas";
     this.id_rubro = 0;
     this.orden = 1;
+    this.icon = "arrow-up";
   }
   
   ngOnInit() {
@@ -91,7 +93,14 @@ export class PublicacionesPage implements OnInit {
   } 
 
   ordenar(){
-    if(this.orden == 1){this.orden = 2}else{this.orden = 1}
+    if(this.orden == 1){
+      this.orden = 2;
+      this.icon = "arrow-down";
+    }else{
+      this.orden = 1;
+      this.icon = "arrow-up";
+    }
   }
+  
 
 }

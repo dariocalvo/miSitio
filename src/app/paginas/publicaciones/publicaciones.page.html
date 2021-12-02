@@ -1,23 +1,18 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-title><h2>Publicaciones</h2></ion-title>
+    <ion-searchbar animated placeholder="Buscar Usuario" [(ngModel)]="usuario"></ion-searchbar>
     <ion-buttons slot="start">
       <ion-menu-button autoHide="false"></ion-menu-button>
     </ion-buttons>
-
-    <ion-chip slot="secondary" (click)="ordenar()">
-      <ion-label>Fecha</ion-label>
-      <ion-icon name="swap-vertical-outline"></ion-icon>
-    </ion-chip>
-
-    <ion-footer>
-      <ion-searchbar placeholder="Buscar por Usuario" [(ngModel)]="usuario"></ion-searchbar>
-   </ion-footer>
-   
+    <ion-buttons slot="end">  
+      <ion-chip slot="secondary" (click)="ordenar()">
+        <ion-icon name="calendar-outline"></ion-icon>
+        <ion-icon [name]="icon"></ion-icon>
+      </ion-chip>
+    </ion-buttons>
   </ion-toolbar>
-</ion-header>
-
-<ion-toolbar>
+<ion-toolbar color="primary">
   <ion-item color="success">
         <ion-label>Categoria</ion-label>
         <ion-select [(ngModel)]="id_rubro" interface="popover">
@@ -26,7 +21,7 @@
         </ion-select>
   </ion-item>
 </ion-toolbar>
-
+</ion-header>
 
 
 

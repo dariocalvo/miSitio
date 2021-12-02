@@ -22,15 +22,15 @@
   <ion-card-content class="contenido">
         <ion-item>  
             <ion-label position="floating">Titulo</ion-label>
-            <ion-title><ion-input rows= "2" type="text" [(ngModel)]="publicacion.titulo" (change)="borrarMSJ()"></ion-input></ion-title>
+            <ion-title><ion-input type="text" autocapitalize="sentences" autocorrect="on" [(ngModel)]="publicacion.titulo" (change)="borrarMSJ()"></ion-input></ion-title>
         </ion-item>
         <ion-item >  
             <ion-label position="floating">Contenido</ion-label>
-            <ion-textarea rows="6" type="text" [(ngModel)]="publicacion.contenido" (change)="borrarMSJ()"></ion-textarea>
+            <ion-textarea rows="7" type="text" autocapitalize="sentences" autocorrect="on" [(ngModel)]="publicacion.contenido" (change)="borrarMSJ()"></ion-textarea>
         </ion-item>
         <ion-item>
             <ion-label position="floating">Pie</ion-label>
-            <ion-input type="text" [(ngModel)]="publicacion.pie" (change)="borrarMSJ()"></ion-input>
+            <ion-input type="text" autocapitalize="sentences" autocorrect="on" [(ngModel)]="publicacion.pie" (change)="borrarMSJ()"></ion-input>
         </ion-item>
             <ion-button fill="outline" color="primary" (click)="guardar()">Guardar</ion-button>
             <ion-button fill="outline" color="medium" (click)="cancelar()">Cancelar</ion-button>
