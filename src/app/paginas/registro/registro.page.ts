@@ -67,7 +67,7 @@ export class RegistroPage implements OnInit {
     this.servUs.traerUsuarioPost("/Usuario/Buscar", this.datos).subscribe(resp => 
       {
        if (resp){
-          this.vibration.vibrate(500);
+          this.vibration.vibrate(250);
           this.comprobacion.username = 'Usuario existente, debes elejir otro nombre. ';
           this.usuarioDisponible= false;
         }else{

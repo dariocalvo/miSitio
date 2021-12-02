@@ -93,6 +93,5 @@ export class PublicacionesPage implements OnInit {
   ordenar(){
     if(this.orden == 1){this.orden = 2}else{this.orden = 1}
   }
- 
 
 }

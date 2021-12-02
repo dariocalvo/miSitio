@@ -32,6 +32,14 @@ export class NuevaPublicacionPage implements OnInit {
   }
 
   ngOnInit() {
+    this.armarPublicacion();
+  }
+
+  ionViewWillEnter(){
+    this.armarPublicacion();
+  }
+
+  armarPublicacion(){
     if(this.servUs.comprobarlogueo){
       this.sumadorId= parseInt(this.servUs.S_pub());
       this.usuario = this.servUs.S_user();
@@ -43,12 +51,10 @@ export class NuevaPublicacionPage implements OnInit {
     }else{
       this.router.navigate(['/login']);
     }
-  }
-
-  ionViewWillEnter(){
-    this.nuevaPublicacion = new Publicacion();
     this.mensaje="";
   }
+
+
 
   asignar(event){
     for(let i = 0 ; i < this.rubros.length ; i++){
