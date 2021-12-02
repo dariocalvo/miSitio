@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+    <ion-thumbnail slot="start">
+      <ion-img src="../../../assets/logo.png"></ion-img>
+    </ion-thumbnail>
+    <ion-title>Tu Sitio.com</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button [routerLink]="['/publicaciones']">
+        <ion-icon name="home-sharp"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="vertical-align-content">
+  <ion-card>
+    <ion-card-header color="primary" class="centrado">
+      <ion-card-title><h2>Inicio de sesión</h2></ion-card-title>
+    </ion-card-header>
+    
+    <ion-card-content>
+      <ion-item lines="full">
+        <ion-label position="floating">Usuario</ion-label>
+        <ion-input type="text" [(ngModel)]= "usuario" (keydown)="borrarMSJ()"></ion-input>
+      </ion-item>
+
+      <ion-item lines="full">
+        <ion-label position="floating">Contraseña</ion-label>
+        <ion-input type="password" [(ngModel)]= "password" (keydown)="borrarMSJ()"></ion-input>
+      </ion-item>
+
+      <ion-row>
+        <ion-col class="centrado">
+          <ion-button type="submit" color="success" (click)="ingresar()">Ingresar</ion-button>
+        </ion-col>  
+      </ion-row>
+      
+      <ion-item>
+        <ion-col class="centrado">
+          <ion-text color="danger">{{mensaje}}</ion-text>
+        </ion-col>
+      </ion-item>  
+
+      <ion-row>
+        <ion-col class="centrado">
+          Aún no tienes cuenta...<a [routerLink]="['/registro']" class="small-text">Registrate</a>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

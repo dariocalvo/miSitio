@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+    <ion-thumbnail slot="start">
+      <ion-img src="../../../assets/logo.png"></ion-img>
+    </ion-thumbnail>
+    <ion-buttons slot="primary">
+      <ion-button [routerLink]="['/publicaciones']">
+        <ion-icon name="home-sharp"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Tu Sitio.com</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="vertical-align-content">
+  <ion-card>
+    <ion-card-header color="primary" class="centrado">
+      <ion-card-title><h2>Registro Nuevo Usuario</h2></ion-card-title>
+    </ion-card-header>
+    
+    <ion-card-content>
+
+      <ion-item lines="full">
+        <ion-label position="floating">Nombre</ion-label>
+        <ion-input type="text" autocomplete [(ngModel)]= "nuevoUsuario.nombre" (keydown)="borrarMSJ(1)"></ion-input>
+      </ion-item>
+      
+      <ion-item lines="full">
+        <ion-label position="floating">Correo Electrónico</ion-label>
+        <ion-input type="text" autocomplete [(ngModel)]= "nuevoUsuario.email" (keydown)="borrarMSJ(2)"></ion-input>
+      </ion-item>
+      
+      <ion-item lines="full">
+        <ion-label position="floating">Usuario</ion-label>
+        <ion-input type="text" autocomplete [(ngModel)]= "nuevoUsuario.username" (keydown)="borrarMSJ(3)" (change)=comprobarUsuario()></ion-input>
+      </ion-item>
+      
+      <ion-item lines="full">
+        <ion-label position="floating">Contraseña</ion-label>
+        <ion-input type="password" [(ngModel)]= "nuevoUsuario.password" (keydown)="borrarMSJ(4)"></ion-input>
+      </ion-item>
+      
+      <ion-row>
+        <ion-col class="centrado">
+          <ion-button type="submit" color="success" (click)="enviar()">Registrarse</ion-button>
+        </ion-col>  
+      </ion-row>
+      
+      <ion-item> 
+        <ion-col class="centrado">
+          <ion-text color="danger">
+            <sub>{{comprobacion.nombre}} {{comprobacion.email}} {{comprobacion.username}} {{msjpas}}</sub>
+          </ion-text>
+        </ion-col>
+      </ion-item>  
+      
+        <ion-row>
+          <ion-col class="centrado">
+            Ya tienes cuenta...<a [routerLink]="['/login']" class="small-text">Ingresa aqui</a>
+          </ion-col>
+        </ion-row>
+      
+    </ion-card-content>
+  </ion-card>
+</ion-content>

@@ -1,0 +1,79 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title><h2>Publicaciones</h2></ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="primary">
+        <ion-button (click)="ordenar()">
+          <ion-icon name="swap-vertical-outline" ></ion-icon>
+        </ion-button>
+    </ion-buttons>
+   
+    <ion-footer>
+      <ion-searchbar placeholder="Buscar por Usuario" [(ngModel)]="usuario"></ion-searchbar>
+   </ion-footer>
+   
+  </ion-toolbar>
+</ion-header>
+
+<ion-toolbar>
+  <ion-item color="success">
+        <ion-label>Categoria</ion-label>
+        <ion-select [(ngModel)]="id_rubro" interface="popover">
+          <ion-select-option [value]= 0 >Todas</ion-select-option>
+          <ion-select-option *ngFor="let rubro of rubros" [value]="rubro.id_rubro">{{rubro.categoria}} </ion-select-option>
+        </ion-select>
+  </ion-item>
+</ion-toolbar>
+
+
+
+
+<ion-content>
+  <ion-list>
+    <ion-card *ngFor="let publicacion of publicaciones | Orden:orden | FiltroRubros:id_rubro | FiltroUsuario:usuario ">
+        <ion-card-header color="dark">
+          <ion-grid>
+            <ion-row>
+              <ion-col size="6" style="text-align: left;">
+                <ion-text color="light">{{publicacion.username}}</ion-text>
+              </ion-col>
+              <ion-col size="6" style="text-align: right;">
+                <ion-text class="txtrubro">{{publicacion.categoria}}</ion-text>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card-header>
+      
+        <ion-card-content class="contenido">
+          <ion-card-title>{{publicacion.titulo}}</ion-card-title><br>
+          <p>{{publicacion.contenido}}</p><br>
+          <ion-card-subtitle>{{publicacion.pie}}</ion-card-subtitle>
+        </ion-card-content>
+
+        <div class="pie">
+          <ion-grid>
+            <ion-row>
+              <ion-col size="6" style="text-align: left;">
+                <ion-text>{{publicacion.fecha | date: 'dd/MM/yyyy - hh:mm'}}</ion-text>
+              </ion-col>
+              <ion-col size="6" style="text-align: right;">
+                <ion-button *ngIf= "mostrar(publicacion.id_usuario)" fill="outline" size="small" [routerLink]="['/publicaciones', publicacion.id_publicacion]">
+                  <ion-icon name="create-outline"></ion-icon>
+                </ion-button>
+                <ion-button *ngIf= "mostrar(publicacion.id_usuario)" fill="outline" size="small" (click)="eliminar(publicacion.id_publicacion)">
+                  <ion-icon name="trash-outline" title="Eliminar"></ion-icon>
+                </ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+      </ion-card>
+  </ion-list>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="agregar()">
+    <ion-fab-button color ="success" [routerLink]="['/nueva-publicacion']">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>  
+</ion-content>

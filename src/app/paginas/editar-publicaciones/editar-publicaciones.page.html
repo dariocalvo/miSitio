@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="primary">
+      <ion-button [routerLink]="['/publicaciones']">
+        <ion-icon name="home-sharp"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  <ion-title>Editar Publicación</ion-title>
+  </ion-toolbar>
+</ion-header>
+  
+<ion-content>
+  
+  <ion-card>
+    <ion-card-header color="dark">
+      <ion-card-title>Autor: <strong>{{publicacion.username}}</strong></ion-card-title>
+      <ion-card-subtitle>Categoría: <strong>{{publicacion.categoria}}</strong></ion-card-subtitle>
+      <ion-text>Publicacion realizada el {{publicacion.fecha  | date: 'dd/MM/yyyy - hh:mm'}}</ion-text>
+
+  </ion-card-header>
+
+  <ion-card-content class="contenido">
+        <ion-item>  
+            <ion-label position="floating">Titulo</ion-label>
+            <ion-title><ion-textarea rows= "2" type="text" [(ngModel)]="publicacion.titulo" (change)="borrarMSJ()"></ion-textarea></ion-title>
+        </ion-item>
+        <ion-item >  
+            <ion-label position="floating">Contenido</ion-label>
+            <ion-textarea rows="10" type="text" [(ngModel)]="publicacion.contenido" (change)="borrarMSJ()"></ion-textarea>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating">Pie</ion-label>
+            <ion-textarea rows="4" type="text" [(ngModel)]="publicacion.pie" (change)="borrarMSJ()"></ion-textarea>
+        </ion-item>
+            <ion-button fill="outline" color="primary" (click)="guardar()">Guardar</ion-button>
+            <ion-button fill="outline" color="medium" (click)="cancelar()">Cancelar</ion-button>
+        <ion-row>
+            <ion-col class="centrado">
+            <ion-text color="danger">{{mensaje}}</ion-text>
+            </ion-col>
+        </ion-row> 
+    </ion-card-content> 
+  </ion-card>
+</ion-content>
+  
